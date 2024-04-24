@@ -30,7 +30,7 @@ namespace Octokit
 
         public static string UriEncode(this string input)
         {
-            return WebUtility.UrlEncode(input);
+            return Uri.EscapeDataString(input);
         }
 
         public static string ToBase64String(this string input)
