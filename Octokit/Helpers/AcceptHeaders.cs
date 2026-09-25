@@ -9,7 +9,7 @@
         public const string StableVersionJson = "application/vnd.github.v3+json";
 
         /// <summary>
-        /// Support for retrieving raw file content with the <see cref="IConnection.GetRaw"/> method.
+        /// Support for retrieving raw file content with the <see cref="IConnection.GetRaw(System.Uri, System.Collections.Generic.IDictionary{string, string})"/> method.
         /// </summary>
         /// <remarks>https://developer.github.com/v3/repos/contents/#custom-media-types</remarks>
         public const string RawContentMediaType = "application/vnd.github.v3.raw";

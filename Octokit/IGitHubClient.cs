@@ -77,7 +77,9 @@ namespace Octokit
         /// <remarks>
         /// Refer to the API documentation for more information: https://developer.github.com/v3/misc/
         /// </remarks>
+#pragma warning disable CS0618 // Type or member is obsolete
         IMiscellaneousClient Miscellaneous { get; }
+#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Access GitHub's OAuth API.

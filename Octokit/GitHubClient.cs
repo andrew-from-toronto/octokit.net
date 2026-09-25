@@ -103,7 +103,9 @@ namespace Octokit
             GitHubApps = new GitHubAppsClient(apiConnection);
             Issue = new IssuesClient(apiConnection);
             Migration = new MigrationClient(apiConnection);
+#pragma warning disable CS0618 // Type or member is obsolete
             Miscellaneous = new MiscellaneousClient(apiConnection);
+#pragma warning restore CS0618 // Type or member is obsolete
             Oauth = new OauthClient(connection);
             Organization = new OrganizationsClient(apiConnection);
             PullRequest = new PullRequestsClient(apiConnection);
@@ -242,7 +244,9 @@ namespace Octokit
         /// <remarks>
         /// Refer to the API documentation for more information: https://developer.github.com/v3/misc/
         /// </remarks>
+#pragma warning disable CS0618 // Type or member is obsolete
         public IMiscellaneousClient Miscellaneous { get; private set; }
+#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Access GitHub's OAuth API.
