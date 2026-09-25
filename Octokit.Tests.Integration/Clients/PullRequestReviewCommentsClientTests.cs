@@ -785,14 +785,14 @@ public class PullRequestReviewCommentsClientTests : IDisposable
         _context.Dispose();
     }
 
-    async Task<PullRequestReviewComment> CreateComment(string body, int position, string commitId, int number)
+    async Task<PullRequestReviewComment> CreateComment(string body, int position, string commitId, int pullRequestNumber)
     {
-        return await CreateComment(body, position, _context.RepositoryName, commitId, number);
+        return await CreateComment(body, position, _context.RepositoryName, commitId, pullRequestNumber);
     }
 
-    async Task<PullRequestReviewComment> CreateCommentWithRepositoryId(string body, int position, string commitId, int number)
+    async Task<PullRequestReviewComment> CreateCommentWithRepositoryId(string body, int position, string commitId, int pullRequestNumber)
     {
-        return await CreateComment(body, position, _context.Repository.Id, commitId, number);
+        return await CreateComment(body, position, _context.Repository.Id, commitId, pullRequestNumber);
     }
 
     async Task<PullRequestReviewComment> CreateComment(string body, int position, string repoName, string pullRequestCommitId, int pullRequestNumber)
@@ -928,7 +928,7 @@ public class PullRequestReviewCommentsClientTests : IDisposable
         int numberToCreate = 2;
         using (var context = await _github.CreateRepositoryContextWithAutoInit(Helper.MakeNameWithTimestamp("PullRequestReviewCommentsReactionTests")))
         {
-            var commentIds = new List<int>();
+            var commentIds = new List<long>();
 
             // Create a test pull request
             var pullRequest = await CreatePullRequest(context);
@@ -967,7 +967,7 @@ public class PullRequestReviewCommentsClientTests : IDisposable
         int numberToCreate = 2;
         using (var context = await _github.CreateRepositoryContextWithAutoInit(Helper.MakeNameWithTimestamp("PullRequestReviewCommentsReactionTests")))
         {
-            var commentIds = new List<int>();
+            var commentIds = new List<long>();
 
             // Create multiple test pull requests
             for (int count = 1; count <= numberToCreate; count++)
@@ -1000,7 +1000,7 @@ public class PullRequestReviewCommentsClientTests : IDisposable
         }
     }
 
-    async Task<int> HelperCreatePullRequestReviewCommentWithReactions(string owner, string repo, PullRequestData pullRequest)
+    async Task<long> HelperCreatePullRequestReviewCommentWithReactions(string owner, string repo, PullRequestData pullRequest)
     {
         var github = Helper.GetAuthenticatedClient();
 

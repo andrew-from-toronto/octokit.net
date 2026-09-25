@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Octokit.Clients;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -8,7 +9,7 @@ namespace Octokit
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class Codespace
     {
-        public int Id { get; private set; }
+        public long Id { get; private set; }
         public string Name { get; private set; }
         public User Owner { get; private set; }
         public User BillableOwner { get; private set; }
@@ -23,8 +24,9 @@ namespace Octokit
         public string WebUrl { get; private set; }
         public string StartUrl { get; private set; }
         public string StopUrl { get; private set; }
+        public StringEnum<CodespaceLocation> Location { get; private set; }
 
-        public Codespace(int id, string name, User owner, User billableOwner, Repository repository, Machine machine, DateTime createdAt, DateTime updatedAt, DateTime lastUsedAt, StringEnum<CodespaceState> state, string url, string machinesUrl, string webUrl, string startUrl, string stopUrl)
+        public Codespace(long id, string name, User owner, User billableOwner, Repository repository, Machine machine, DateTime createdAt, DateTime updatedAt, DateTime lastUsedAt, StringEnum<CodespaceState> state, string url, string machinesUrl, string webUrl, string startUrl, string stopUrl, StringEnum<CodespaceLocation> location)
         {
             Id = id;
             Name = name;
@@ -41,6 +43,7 @@ namespace Octokit
             WebUrl = webUrl;
             StartUrl = startUrl;
             StopUrl = stopUrl;
+            Location = location;
         }
 
         public Codespace() { }
